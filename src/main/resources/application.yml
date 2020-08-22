@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: iss-product-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
