@@ -1,27 +1,18 @@
-package es.urjc.code.products.domain;
+package es.urjc.code.products.application.domain;
 
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 
 public class Choice {
 	
     private String code;
     private String label;
 
-	public Choice() {
-		
+    public Choice() {
 	}
 
-	@BsonCreator
-    public Choice(@BsonProperty("code") String code, @BsonProperty("label") String label) {
-        this.code = code;
-        this.label = label;
-    }
-	
-    public String getCode() {
+	public String getCode() {
         return code;
     }
 

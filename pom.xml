@@ -21,10 +21,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 		<testcontainer.version>1.14.3</testcontainer.version>
-		<code.coverage.exclusions>
-		    **/es/urjc/code/products/init/**,
-			**/es/urjc/code/products/Application.java
-		</code.coverage.exclusions>		
+		<code.coverage.exclusions>**/init/**,**/domain/**,**/dto/**,es/urjc/code/products/Application.java</code.coverage.exclusions>		
 	</properties>
 
 	<dependencies>
@@ -42,15 +39,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -106,18 +99,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.benas</groupId>
-            <artifactId>random-beans</artifactId>
-            <version>3.9.0</version>
-            <scope>test</scope>
-        </dependency>         				
+        </dependency>       				
 	</dependencies>
 
 	<build>

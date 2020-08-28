@@ -1,25 +1,12 @@
-package es.urjc.code.products.domain;
+package es.urjc.code.products.application.domain;
 
-import org.bson.codecs.pojo.annotations.BsonDiscriminator;
-
-
-@BsonDiscriminator
 public class Question {
+	
     private String code;
     private int index;
     private String text;
 
-    public Question() {
-    	
-    }
-    
-    public Question(String code, int index, String text) {
-        this.code = code;
-        this.index = index;
-        this.text = text;
-    }
-
-    public String getCode() {
+	public String getCode() {
         return code;
     }
 

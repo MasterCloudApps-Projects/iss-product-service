@@ -1,28 +1,35 @@
-package es.urjc.code.products.domain;
+package es.urjc.code.products.application.domain;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 
 
-public class NumericQuestion extends Question {
+public class ChoiceQuestion extends Question {
 	
-    private NumericQuestion(final Builder builder) {
+    private List<Choice> choices;
+
+    public ChoiceQuestion() {
+	}
+
+	private ChoiceQuestion(final Builder builder) {
     	setCode(builder.code);
         setIndex(builder.index);
         setText(builder.text);
+        this.choices = builder.choices;
+    }
+    
+    public static List<Choice> yesNoChoice() {
+        return Arrays.asList(
+                new Choice.Builder().withCode("YES").withLabel("Yes").build(),
+                new Choice.Builder().withCode("NO").withLabel("No").build()
+        );
     }
 
-	public NumericQuestion() {
-		super();
-	}
-	
-    @BsonCreator
-    public NumericQuestion(@BsonProperty("code") String code,
-                           @BsonProperty("index") int index,
-                           @BsonProperty("text") String text) {
-        super(code, index, text);
+    public List<Choice> getChoices() {
+        return choices;
     }
     
     public static Builder builder() {
@@ -33,14 +40,15 @@ public class NumericQuestion extends Question {
     public boolean equals(Object o) {
         if (this == o) return true;
 
-        if (!(o instanceof NumericQuestion)) return false;
+        if (!(o instanceof ChoiceQuestion)) return false;
 
-        NumericQuestion that = (NumericQuestion) o;
+        ChoiceQuestion that = (ChoiceQuestion) o;
 
         return new EqualsBuilder()
                 .append(getCode(), that.getCode())
                 .append(getIndex(), that.getIndex())
                 .append(getText(), that.getText())
+                .append(getChoices(), that.getChoices())
                 .isEquals();
     }
 
@@ -51,6 +59,7 @@ public class NumericQuestion extends Question {
                 .append(getCode())
                 .append(getIndex())
                 .append(getText())
+                .append(getChoices())
                 .toHashCode();
     }
             
@@ -59,6 +68,7 @@ public class NumericQuestion extends Question {
         private String code;
         private int index;
         private String text;        
+        private List<Choice> choices;
 
         public Builder withCode(String value) {
             this.code = value;
@@ -75,5 +85,14 @@ public class NumericQuestion extends Question {
             return this;
         }
 
-    }    
+        public Builder withChoices(List<Choice> value) {
+        	this.choices = value;
+            return this;
+        }
+        
+        public ChoiceQuestion build() {
+            return new ChoiceQuestion(this);
+        }
+    }
+    
 }

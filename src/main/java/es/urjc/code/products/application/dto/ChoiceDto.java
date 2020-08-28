@@ -8,6 +8,10 @@ public class ChoiceDto {
     private String code;
     private String label;
     
+    public ChoiceDto() {
+    	
+    }
+    
     public String getCode() {
         return code;
     }
@@ -38,7 +42,8 @@ public class ChoiceDto {
                 .append(label)
                 .toHashCode();
     }
-        
+            
+    
     public static final class Builder {
 
         private final ChoiceDto object;
@@ -62,4 +67,5 @@ public class ChoiceDto {
         }
 
     }
+
 }

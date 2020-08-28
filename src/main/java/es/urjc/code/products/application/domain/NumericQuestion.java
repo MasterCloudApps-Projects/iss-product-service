@@ -1,27 +1,20 @@
-package es.urjc.code.products.domain;
+package es.urjc.code.products.application.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 
-public class DateQuestion extends Question {
 
-    private DateQuestion(final Builder builder) {
+public class NumericQuestion extends Question {
+	
+	
+    public NumericQuestion() {
+		
+	}
+
+	private NumericQuestion(final Builder builder) {
     	setCode(builder.code);
         setIndex(builder.index);
         setText(builder.text);
-    }
-
-	public DateQuestion() {
-	}
-	
-	@BsonCreator
-    public DateQuestion(
-            @BsonProperty("code") String code,
-            @BsonProperty("index") int index,
-            @BsonProperty("text") String text) {
-        super(code, index, text);
     }
 
     public static Builder builder() {
@@ -32,9 +25,9 @@ public class DateQuestion extends Question {
     public boolean equals(Object o) {
         if (this == o) return true;
 
-        if (!(o instanceof DateQuestion)) return false;
+        if (!(o instanceof NumericQuestion)) return false;
 
-        DateQuestion that = (DateQuestion) o;
+        NumericQuestion that = (NumericQuestion) o;
 
         return new EqualsBuilder()
                 .append(getCode(), that.getCode())
@@ -73,7 +66,10 @@ public class DateQuestion extends Question {
             this.text = value;
             return this;
         }
+        
+        public NumericQuestion build() {
+            return new NumericQuestion(this);
+        }
 
-    }
-    
+    }    
 }

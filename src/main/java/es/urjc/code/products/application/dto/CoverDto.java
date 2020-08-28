@@ -6,13 +6,17 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class CoverDto {
+	
     private String code;
     private String name;
     private String description;
     private boolean optional;
     private BigDecimal sumInsured;
     
-    public String getCode() {
+    public CoverDto() {
+	}
+
+	public String getCode() {
         return code;
     }
 

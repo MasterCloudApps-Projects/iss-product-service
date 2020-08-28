@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class ProductDto {
+	
     private String code;
     private String name;
     private String image;
@@ -14,8 +15,12 @@ public class ProductDto {
     private List<QuestionDto> questions;
     private int maxNumberOfInsured;
     private String icon;
-    
-    public String getCode() {
+
+	public ProductDto() {
+		
+	}
+
+	public String getCode() {
         return code;
     }
 
@@ -81,6 +86,7 @@ public class ProductDto {
                 .append(icon)
                 .toHashCode();
     }
+    
     public static final class Builder {
 
         private final ProductDto object;

@@ -1,11 +1,9 @@
-package es.urjc.code.products.domain;
+package es.urjc.code.products.application.domain;
 
 import java.math.BigDecimal;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 
 public class Cover {
 	
@@ -19,20 +17,6 @@ public class Cover {
     	
     }
     
-    @BsonCreator
-    public Cover(
-            @BsonProperty("code") String code,
-            @BsonProperty("name") String name,
-            @BsonProperty("description") String description,
-            @BsonProperty("optional") boolean optional,
-            @BsonProperty("sumInsured") BigDecimal sumInsured) {
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.optional = optional;
-        this.sumInsured = sumInsured;
-    }
-
     public String getCode() {
         return code;
     }
