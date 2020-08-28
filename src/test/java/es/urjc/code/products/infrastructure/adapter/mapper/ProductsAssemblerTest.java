@@ -15,7 +15,7 @@ import es.urjc.code.products.application.domain.Question;
 public class ProductsAssemblerTest {
 
 	@Test
-	public void shouldBeMapProductToProductDto() {
+	void shouldBeMapProductToProductDto() {
 		final var product = getProduct();
 		final var productDto = ProductsAssembler.map(product);
 		assertEquals(product.getCode(), productDto.getCode());
@@ -29,7 +29,7 @@ public class ProductsAssemblerTest {
 	}
 	
 	@Test
-	public void shouldBeMapListProductToListProductDto() {
+	void shouldBeMapListProductToListProductDto() {
 		 final var products = Arrays.asList(getProduct());
 		 final var productDtos = ProductsAssembler.map(products);
 		 assertEquals(products.get(0).getCode(), productDtos.get(0).getCode());

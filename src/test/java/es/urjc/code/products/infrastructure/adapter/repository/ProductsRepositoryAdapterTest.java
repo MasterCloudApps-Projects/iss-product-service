@@ -31,7 +31,7 @@ public class ProductsRepositoryAdapterTest {
 	}
 	
 	@Test
-	public void shouldBeReturnEntityNotFound() {
+	void shouldBeReturnEntityNotFound() {
 		
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 			// given
@@ -44,7 +44,7 @@ public class ProductsRepositoryAdapterTest {
 	}
 	
 	@Test
-	public void shouldBeReturnProduct() {
+	void shouldBeReturnProduct() {
 		// given
 		final var product = getProduct();
 		when(productMongoRepository.findById(CODE_CAR)).thenReturn(Optional.of(product));
@@ -56,7 +56,7 @@ public class ProductsRepositoryAdapterTest {
 	}
 
 	@Test
-	public void shouldBeReturnAllProduct() {
+	void shouldBeReturnAllProduct() {
 		// given
 	    final var products = Arrays.asList(getProduct());
 	    when(productMongoRepository.findAll()).thenReturn(products);

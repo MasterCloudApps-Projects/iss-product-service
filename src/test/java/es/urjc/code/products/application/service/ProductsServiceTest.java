@@ -27,7 +27,7 @@ public class ProductsServiceTest {
 	}
 	
 	@Test
-	public void shouldBeGetProduct() {
+	void shouldBeGetProduct() {
 		// given
 		final var product = getProduct();
 		when(loadProductPort.get(CODE_CAR)).thenReturn(product);
@@ -39,7 +39,7 @@ public class ProductsServiceTest {
 	}
 
 	@Test
-	public void shouldBeGetAllProducts() {
+	void shouldBeGetAllProducts() {
 		// given
 	    final var products = Arrays.asList(getProduct());
 	    when(loadProductPort.findAll()).thenReturn(products);

@@ -31,7 +31,7 @@ public class ProductsControllerTest {
 	}
 	
 	@Test
-	public void shouldBeGetProductUseCase() {
+	void shouldBeGetProductUseCase() {
 		// given
 		final var productDto = getProductDto();
 		when(getProductUseCase.get(CODE_CAR)).thenReturn(productDto);
@@ -43,7 +43,7 @@ public class ProductsControllerTest {
 	}
 
 	@Test
-	public void shouldBeFindAllProductsUseCase() {
+	void shouldBeFindAllProductsUseCase() {
 		// given
 	    final var productDtos = Arrays.asList(getProductDto());
 	    when(findAllProductsUseCase.findAll()).thenReturn(productDtos);

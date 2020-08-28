@@ -25,19 +25,19 @@ public class RestExceptionHandlerTest {
     }
 
     @Test
-    public void testNotFoundException() throws Exception {
+    void testNotFoundException() throws Exception {
         mockMvc.perform(get("/test/not-found")).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message").value("entity not found"));
     }
     
     @Test
-    public void testBusinessException() throws Exception {
+    void testBusinessException() throws Exception {
         mockMvc.perform(get("/test/business-exception")).andExpect(status().isUnprocessableEntity())
                 .andExpect(jsonPath("$.message").value("business error"));
     }
 
     @Test
-    public void testIOException() throws Exception {
+    void testIOException() throws Exception {
         mockMvc.perform(get("/test/io-exception")).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("Bad Request"));
     }
