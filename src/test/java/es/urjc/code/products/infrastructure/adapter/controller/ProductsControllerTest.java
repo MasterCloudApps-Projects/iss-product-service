@@ -16,7 +16,7 @@ import es.urjc.code.products.application.dto.ProductDto;
 import es.urjc.code.products.application.port.incoming.FindAllProductsUseCase;
 import es.urjc.code.products.application.port.incoming.GetProductUseCase;
 
-public class ProductsControllerTest {
+class ProductsControllerTest {
 	
 	private static final String CODE_CAR = "CAR";
 	private GetProductUseCase getProductUseCase;

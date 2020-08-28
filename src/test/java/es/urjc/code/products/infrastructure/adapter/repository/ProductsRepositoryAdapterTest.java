@@ -16,7 +16,7 @@ import es.urjc.code.products.application.domain.Product;
 import es.urjc.code.products.exception.EntityNotFoundException;
 import es.urjc.code.products.infrastructure.adapter.repository.mongodb.ProductMongoRepository;
 
-public class ProductsRepositoryAdapterTest {
+class ProductsRepositoryAdapterTest {
 	
 	private static final String CODE_CAR = "CAR";
 	private static final String CODE_NOT_EXIST="FAKE_CODE";

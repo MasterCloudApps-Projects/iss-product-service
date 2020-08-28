@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import es.urjc.code.products.application.domain.Product;
 import es.urjc.code.products.application.port.outgoing.LoadProductPort;
 
-public class ProductsServiceTest {
+class ProductsServiceTest {
 
 	private static final String CODE_CAR = "CAR";
 	private LoadProductPort loadProductPort;

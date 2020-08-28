@@ -12,7 +12,7 @@ import es.urjc.code.products.application.domain.NumericQuestion;
 import es.urjc.code.products.application.domain.Product;
 import es.urjc.code.products.application.domain.Question;
 
-public class ProductsAssemblerTest {
+class ProductsAssemblerTest {
 
 	@Test
 	void shouldBeMapProductToProductDto() {

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-public class RestExceptionHandlerTest {
+class RestExceptionHandlerTest {
 
     private TestController testController;
 
