@@ -1,6 +1,5 @@
 package es.urjc.code.products.application.service;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -47,7 +46,7 @@ public class ProductsServiceTest {
 	 	final var result = this.sut.findAll();
 	    // then
 	 	verify(loadProductPort).findAll();
-	 	assertTrue(1==result.size());
+	 	assertEquals(1,result.size());
 	}
 
 	private Product getProduct() {

@@ -1,7 +1,7 @@
 package es.urjc.code.products.infrastructure.adapter.mapper;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,8 +24,8 @@ public class ProductsAssemblerTest {
 		assertEquals(product.getImage(), productDto.getImage());
 		assertEquals(product.getMaxNumberOfInsured(), productDto.getMaxNumberOfInsured());
 		assertEquals(product.getIcon(), productDto.getIcon());
-		assertTrue(product.getCovers().size() == productDto.getCovers().size());
-		assertTrue(product.getQuestions().size() == productDto.getQuestions().size());
+		assertEquals(product.getCovers().size(),productDto.getCovers().size());
+		assertEquals(product.getQuestions().size(),productDto.getQuestions().size());
 	}
 	
 	@Test
@@ -38,8 +38,8 @@ public class ProductsAssemblerTest {
 			assertEquals(products.get(0).getImage(), productDtos.get(0).getImage());
 			assertEquals(products.get(0).getMaxNumberOfInsured(), productDtos.get(0).getMaxNumberOfInsured());
 			assertEquals(products.get(0).getIcon(), productDtos.get(0).getIcon());
-			assertTrue(products.get(0).getCovers().size() == productDtos.get(0).getCovers().size());
-			assertTrue(products.get(0).getQuestions().size() == productDtos.get(0).getQuestions().size());
+			assertEquals(products.get(0).getCovers().size(),productDtos.get(0).getCovers().size());
+			assertEquals(products.get(0).getQuestions().size(),productDtos.get(0).getQuestions().size());
 	}
 	
 	private Product getProduct() {

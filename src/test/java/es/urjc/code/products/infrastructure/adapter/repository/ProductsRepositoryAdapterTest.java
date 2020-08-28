@@ -1,6 +1,5 @@
 package es.urjc.code.products.infrastructure.adapter.repository;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -64,7 +63,7 @@ public class ProductsRepositoryAdapterTest {
 	 	final var result = this.sut.findAll();
 	    // then
 	 	verify(productMongoRepository).findAll();
-	 	assertTrue(1==result.size());
+	 	assertEquals(1,result.size());
 	 	assertEquals(CODE_CAR, result.get(0).getCode());
 	}
 	
