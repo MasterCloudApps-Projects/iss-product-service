@@ -31,14 +31,12 @@ class ProductsRepositoryAdapterTest {
 	
 	@Test
 	void shouldBeReturnEntityNotFound() {
+		// given
+		when(productMongoRepository.findById(CODE_NOT_EXIST)).thenReturn(Optional.empty());
 		
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
-			// given
-			when(productMongoRepository.findById(CODE_NOT_EXIST)).thenReturn(Optional.empty());
-			// when
-			sut.get(CODE_NOT_EXIST);
-			// then
-			verify(productMongoRepository).findById(CODE_NOT_EXIST);			   
+		// when
+		sut.get(CODE_NOT_EXIST);
 		});
 	}
 	
