@@ -2,11 +2,14 @@ package es.urjc.code.products.infrastructure.adapter.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import es.urjc.code.products.application.domain.Choice;
+import es.urjc.code.products.application.domain.ChoiceQuestion;
 import es.urjc.code.products.application.domain.Cover;
 import es.urjc.code.products.application.domain.NumericQuestion;
 import es.urjc.code.products.application.domain.Product;
@@ -43,13 +46,27 @@ class ProductsAssemblerTest {
 	}
 	
 	private Product getProduct() {
-		List<Cover> covers = Arrays.asList(new Cover.Builder().withCode("C1").withName("Assistance").withDescription("")
-				.withOptional(true).withSumInsured(null).build());
-		List<Question> questions = Arrays.asList(new NumericQuestion.Builder().withCode("NUM_OF_CLAIM").withIndex(3)
-				.withText("Number of claims in last 5 years").build());
+		List<Cover> covers = Arrays.asList(
+				new Cover.Builder().withCode("C1").withName("Luggage").withDescription("").withOptional(false)
+						.withSumInsured(new BigDecimal("5000")).build(),
+				new Cover.Builder().withCode("C2").withName("Illness").withDescription("").withOptional(false)
+						.withSumInsured(new BigDecimal("5000")).build(),
+				new Cover.Builder().withCode("C3").withName("Assistance").withDescription("").withOptional(true)
+						.withSumInsured(null).build());
 
-		Product p = new Product.Builder().withCode("CAR").withName("Happy Driver").withImage("/static/car.jpg")
-				.withDescription("Car insurance").withMaxNumberOfInsured(1).withIcon("car").withCovers(covers)
+		List<Choice> choices = Arrays.asList(new Choice.Builder().withCode("EUR").withLabel("Europe").build(),
+				new Choice.Builder().withCode("WORLD").withLabel("World").build(),
+				new Choice.Builder().withCode("PL").withLabel("Poland").build());
+		List<Question> questions = Arrays.asList(
+				new ChoiceQuestion.Builder().withCode("DESTINATION").withIndex(1).withText("Destination")
+						.withChoices(choices).build(),
+				new NumericQuestion.Builder().withCode("NUM_OF_ADULTS").withIndex(2).withText("Number of adults")
+						.build(),
+				new NumericQuestion.Builder().withCode("NUM_OF_CHILDREN").withIndex(3).withText("Number of children")
+						.build());
+
+		Product p = new Product.Builder().withCode("TRI").withName("Safe Traveller").withImage("/static/travel.jpg")
+				.withDescription("Travel insurance").withMaxNumberOfInsured(10).withIcon("plane").withCovers(covers)
 				.withQuestions(questions).build();
 
 		return p;
