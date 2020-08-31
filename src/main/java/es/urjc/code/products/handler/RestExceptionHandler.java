@@ -1,4 +1,4 @@
-package es.urjc.code.products;
+package es.urjc.code.products.handler;
 
 import java.io.IOException;
 
