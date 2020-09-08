@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class ProductDto {
 	
+	public String id;
     private String code;
     private String name;
     private String image;
@@ -18,6 +19,10 @@ public class ProductDto {
 
 	public ProductDto() {
 		
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getCode() {
@@ -61,6 +66,7 @@ public class ProductDto {
         ProductDto that = (ProductDto) o;
 
         return new EqualsBuilder()
+        		.append(id, that.id)
                 .append(code, that.code)
                 .append(name, that.name)
                 .append(description, that.description)
@@ -76,6 +82,7 @@ public class ProductDto {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
+        		.append(id)
                 .append(code)
                 .append(name)
                 .append(description)
@@ -95,6 +102,12 @@ public class ProductDto {
             object = new ProductDto();
         }
 
+        public Builder withId(String value) {
+            object.id = value;
+            return this;
+        }
+
+        
         public Builder withCode(String value) {
             object.code = value;
             return this;

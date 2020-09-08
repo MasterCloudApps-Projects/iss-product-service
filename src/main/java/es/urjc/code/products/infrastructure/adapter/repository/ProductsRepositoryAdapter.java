@@ -22,7 +22,7 @@ public class ProductsRepositoryAdapter implements LoadProductPort {
 	
 	@Override
 	public Product get(String productCode) {
-		return productMongoRepository.findById(productCode).orElseThrow(EntityNotFoundException::new);
+		return productMongoRepository.findByCode(productCode).orElseThrow(EntityNotFoundException::new);
 	}
 
 	@Override

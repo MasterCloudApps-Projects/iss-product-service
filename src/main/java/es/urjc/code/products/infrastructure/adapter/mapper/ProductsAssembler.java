@@ -30,7 +30,7 @@ public final class ProductsAssembler {
 	}
 
 	public static ProductDto map(Product product) {
-		return new ProductDto.Builder().withCode(product.getCode()).withName(product.getName())
+		return new ProductDto.Builder().withId(product.getId()).withCode(product.getCode()).withName(product.getName())
 				.withImage(product.getImage()).withDescription(product.getDescription()).withCovers(mapCovers(product))
 				.withQuestions(mapQuestions(product)).withMaxNumberOfInsured(product.getMaxNumberOfInsured())
 				.withIcon(product.getIcon()).build();

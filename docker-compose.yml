@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mongo_db:
+    image: mongo:4.0.10
+    container_name: mongo_db
+    ports:
+      - 27017:27017
+    command: --smallfiles
+  iss-product-service:
+    container_name: iss-product-service
+    image: iss-product-service
+    build: ./
+    ports:
+      - 8081:8080
+    depends_on:
+      - mongo_db

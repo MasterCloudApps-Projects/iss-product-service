@@ -3,9 +3,9 @@ spring:
     name: iss-product-service
   data:
     mongodb:
-       host: ${MONGO_DB_HOST}
-       port: ${MONGO_DB_PORT}
-       database: ${MONGO_DB_NAME}    
+       host: localhost
+       port: 27017
+       database: MDB    
 
 management:
   endpoints:

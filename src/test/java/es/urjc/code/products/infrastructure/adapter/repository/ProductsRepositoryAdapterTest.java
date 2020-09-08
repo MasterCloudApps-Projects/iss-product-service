@@ -32,7 +32,7 @@ class ProductsRepositoryAdapterTest {
 	@Test
 	void shouldBeReturnEntityNotFound() {
 		// given
-		when(productMongoRepository.findById(CODE_NOT_EXIST)).thenReturn(Optional.empty());
+		when(productMongoRepository.findByCode(CODE_NOT_EXIST)).thenReturn(Optional.empty());
 		
 		Assertions.assertThrows(EntityNotFoundException.class, () -> {
 		// when
@@ -44,11 +44,11 @@ class ProductsRepositoryAdapterTest {
 	void shouldBeReturnProduct() {
 		// given
 		final var product = getProduct();
-		when(productMongoRepository.findById(CODE_CAR)).thenReturn(Optional.of(product));
+		when(productMongoRepository.findByCode(CODE_CAR)).thenReturn(Optional.of(product));
 		// when
 		final var result = sut.get(CODE_CAR);
 		// then
-		verify(productMongoRepository).findById(CODE_CAR);
+		verify(productMongoRepository).findByCode(CODE_CAR);
 		assertEquals(CODE_CAR,result.getCode());
 	}
 

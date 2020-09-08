@@ -10,29 +10,29 @@ import es.urjc.code.products.infrastructure.adapter.repository.mongodb.ProductMo
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
-	private final ProductMongoRepository springDataProductRepository;
+	private final ProductMongoRepository productMongoRepository;
 
 	@Autowired
-	public DataLoader(ProductMongoRepository springDataProductRepository) {
-		this.springDataProductRepository = springDataProductRepository;
+	public DataLoader(ProductMongoRepository productMongoRepository) {
+		this.productMongoRepository = productMongoRepository;
 	}
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-        if (!springDataProductRepository.findById("HSI").isPresent()) {
-        	springDataProductRepository.save(DemoProductsFactory.house());
+        if (!productMongoRepository.findByCode("HSI").isPresent()) {
+        	productMongoRepository.save(DemoProductsFactory.house());
         }
         
-        if (!springDataProductRepository.findById("TRI").isPresent()) {
-        	springDataProductRepository.save(DemoProductsFactory.travel());
+        if (!productMongoRepository.findByCode("TRI").isPresent()) {
+        	productMongoRepository.save(DemoProductsFactory.travel());
         }
 
-        if (!springDataProductRepository.findById("FAI").isPresent()) {
-        	springDataProductRepository.save(DemoProductsFactory.farm());
+        if (!productMongoRepository.findByCode("FAI").isPresent()) {
+        	productMongoRepository.save(DemoProductsFactory.farm());
         }
 
-        if (!springDataProductRepository.findById("CAR").isPresent()) {
-        	springDataProductRepository.save(DemoProductsFactory.car());
+        if (!productMongoRepository.findByCode("CAR").isPresent()) {
+        	productMongoRepository.save(DemoProductsFactory.car());
         }
 		
 	}

@@ -6,12 +6,14 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
+@Document(collection = "product")
 public class Product {
 	
-	@Id
+    @Id
+	public String id;
     private String code;
     private String name;
     private String image;
@@ -23,6 +25,10 @@ public class Product {
     
 	public Product() {
 		
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getCode() {
@@ -66,6 +72,7 @@ public class Product {
         Product that = (Product) o;
 
         return new EqualsBuilder()
+        		.append(id, that.id) 
                 .append(code, that.code)
                 .append(name, that.name)
                 .append(image, that.image)
@@ -81,6 +88,7 @@ public class Product {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
+        		.append(id)
                 .append(code)
                 .append(name)
                 .append(image)
@@ -100,6 +108,11 @@ public class Product {
             object = new Product();
         }
 
+        public Builder withId(String value) {
+            object.id = value;
+            return this;
+        }
+        
         public Builder withCode(String value) {
             object.code = value;
             return this;
