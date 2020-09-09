@@ -16,6 +16,16 @@ public class TestController {
         throw new EntityNotFoundException("entity not found");
     }
 
+    @GetMapping("/test/not-found/iae-with-message")
+    public void entityNotFoundNonUniqueResultWithMessage() {
+        throw new EntityNotFoundException("entity not found", new IllegalArgumentException());
+    }
+
+    @GetMapping("/test/not-found/iae")
+    public void entityNotFoundNonUniqueResult() {
+        throw new EntityNotFoundException(new IllegalArgumentException("illegal argument"));
+    }
+
     @GetMapping("/test/business-exception")
     public void business() {
         throw new BusinessException("business error");

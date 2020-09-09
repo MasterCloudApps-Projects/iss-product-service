@@ -32,6 +32,19 @@ class RestExceptionHandlerTest {
         mockMvc.perform(get("/test/not-found")).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message").value("entity not found"));
     }
+
+    @Test
+    void testNotFoundExceptionWithThrowable() throws Exception {
+        mockMvc.perform(get("/test/not-found/iae")).andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("java.lang.IllegalArgumentException: illegal argument"));
+    }
+
+    
+    @Test
+    void testNotFoundExceptionWithThrowableAndMessage() throws Exception {
+        mockMvc.perform(get("/test/not-found/iae-with-message")).andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("entity not found"));
+    }
     
     @Test
     void testBusinessException() throws Exception {
