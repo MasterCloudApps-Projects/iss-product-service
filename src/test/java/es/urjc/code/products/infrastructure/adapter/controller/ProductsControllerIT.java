@@ -20,7 +20,7 @@ class ProductsControllerIT extends BaseIT {
 
 
     @Test
-    public void shouldRetrieveAllProducts() {
+    void shouldRetrieveAllProducts() {
     	
     	// given
     	final RequestSpecification requestSpecification = given()
@@ -45,7 +45,7 @@ class ProductsControllerIT extends BaseIT {
     }
     
     @Test
-    public void shouldRetrieveProduct() {
+    void shouldRetrieveProduct() {
     	
     	// given
     	final RequestSpecification requestSpecification = given()
