@@ -1,6 +1,7 @@
 package es.urjc.code.products.infrastructure.adapter.controller;
 
 import static es.urjc.code.products.infrastructure.adapter.controller.BaseIT.Resources.V1_PRODUCTS_ENDPOINT;
+import static es.urjc.code.products.infrastructure.adapter.controller.BaseIT.Resources.V1_PRODUCTS_GET_CAR_ENDPOINT;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -55,7 +56,7 @@ class ProductsControllerIT extends BaseIT {
         // when
         final Response response = requestSpecification
                 .when()
-                .get("/v1/products/CAR");
+                .get(V1_PRODUCTS_GET_CAR_ENDPOINT.build());
         
         // then
         final Product productResponse = response

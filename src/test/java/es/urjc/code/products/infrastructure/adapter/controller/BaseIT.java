@@ -18,7 +18,8 @@ public abstract class BaseIT {
     }
 
     enum Resources {
-        V1_PRODUCTS_ENDPOINT("/v1/products");
+        V1_PRODUCTS_ENDPOINT("/v1/products"),
+        V1_PRODUCTS_GET_CAR_ENDPOINT("/v1/products/CAR");
 
         private final String endpoint;
 
