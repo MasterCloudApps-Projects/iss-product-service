@@ -1,0 +1,121 @@
+openapi: 3.0.1
+info:
+  title: Product Catalog
+  description: Product API.
+  version: 1.0.0
+servers:
+- url: /api/v1
+paths:
+  /products:
+    get:
+      summary: Get Products
+      operationId: getProducts
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+  /products/{productCode}:
+    get:
+      summary: Get Product
+      operationId: getProduct
+      parameters:
+        - name: productCode
+          in: path
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+            format: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+      x-codegen-request-body-name: product
+components:
+  schemas:
+    ProductDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 5f5cfc0fc13f9304d8c88158
+        code:
+          type: string
+          example: CAR
+        name:
+          type: string
+          example: Happy Driver
+        description:
+          type: string
+          example: Car insurance
+        icon:
+          type: string
+          example: car
+        image:
+          type: string
+          example: /static/car.jpg  
+        maxNumberOfInsured:
+          type: number
+          example: 1
+        covers:  
+          type: array
+          items:
+             $ref: '#/components/schemas/CoverDto'
+        questions:  
+          type: array
+          items:
+             $ref: '#/components/schemas/QuestionDto'
+      required:
+        - id
+        - code
+        - name
+        - description
+        - icon
+        - image
+        - maxNumberOfInsured
+        - covers
+        - questions
+    CoverDto:
+      type: object
+      properties:
+        code:
+          type: string
+          example: C1 
+        name:
+          type: string
+          example: Assistance
+        description:
+          type: string
+        optional:
+          type: boolean
+        sumInsured:
+          type: number          
+      required:
+        - code
+        - name
+        - optional
+    QuestionDto:
+      type: object
+      properties:
+        code:
+          type: string
+          example: NUM_OF_CLAIM
+        index:
+          type:  number
+          example: 1
+        text:
+          type: string
+          example: Number of claims in last 5 years
+      required:
+        - code
+        - index
+        - text
+               
