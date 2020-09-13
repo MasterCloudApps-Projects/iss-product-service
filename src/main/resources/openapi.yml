@@ -38,6 +38,10 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/ProductDto'
+        404:
+          description: Product not found
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'                 
       x-codegen-request-body-name: product
 components:
   schemas:
@@ -118,4 +122,13 @@ components:
         - code
         - index
         - text
-               
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: number
+          example: 404
+        message:
+          type: string
+      required:
+        - status                     
