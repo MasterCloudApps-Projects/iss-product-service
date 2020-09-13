@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  iss-product-service:
+    container_name: iss-product-service
+    image: iss-product-service
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    environment:
+      - MONGO_DB_HOST=mongodb
+      - MONGO_DB_PORT=27017
+      - MONGO_DB_NAME=MDB
+    ports:
+      - 8081:8080
+    depends_on:
+      - mongo_db
+  mongo_db:
+    image: mongo:4.2.6
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+    restart: always
