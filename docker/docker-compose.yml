@@ -19,4 +19,9 @@ services:
     container_name: "mongodb"
     ports:
       - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
     restart: always
+
+volumes:
+  mongodb_data_container:
