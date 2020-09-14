@@ -1,5 +1,18 @@
 # iss-product-service
 
+We decided to implement it in an extremely simplified version of an insurance sales system to test the following aspects of microservice development:
+
+Project creation and development
+Access of both relational and NoSQL databases
+Blocking and non-blocking operations implementation
+Microservice to microservice communication (synchronous and asynchronous)
+Service discovery
+Running background jobs
+
+The iss-product-service microservice is responsible for managing the product catalog.
+
+This held information about products that were stored in MongoDB. Each product had a code, name, image, description, cover-list, and question-list, which affected the price defined by the tariff. 
+
 This is a spring boot project that exposes /products catalog endpoint and data can be persisted in mongodb database.
 
 In the Integration Tests, the Testcontainers Java library is used for starting mongodb in a docker container.
