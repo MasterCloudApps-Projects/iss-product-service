@@ -10,7 +10,7 @@ We decided to implement it in an extremely simplified version of an insurance sa
 * Running background jobs
 
 
-The iss-product-service microservice is responsible for managing the product catalog.
+The iss-product-service microservice is responsible to managed the product catalog.
 
 This held information about products that were stored in MongoDB. Each product had a code, name, image, description, cover-list, and question-list, which affected the price defined by the tariff. 
 
