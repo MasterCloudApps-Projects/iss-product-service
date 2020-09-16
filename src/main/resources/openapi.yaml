@@ -1,0 +1,195 @@
+openapi: 3.0.1
+info:
+  title: Product catalog API
+  description: This is a product catalog API service using springdoc-openapi and OpenAPI 3.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8081'
+    description: Generated server url
+tags:
+  - name: product
+    description: the Product catalog API
+paths:
+  '/api/v1/products/{productCode}':
+    get:
+      tags:
+        - product
+      summary: Find product by code
+      description: Returns a single product
+      operationId: getProduct
+      parameters:
+        - name: productCode
+          in: path
+          description: code of the product to be obtained. Cannot be empty.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Product not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/products:
+    get:
+      tags:
+        - product
+      summary: Find products
+      description: Get all products in catalog
+      operationId: getProducts
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+    CoverDto:
+      required:
+        - code
+        - name
+        - optional
+      type: object
+      properties:
+        code:
+          type: string
+          description: Cover code.
+          example: C1
+        name:
+          type: string
+          description: Cover name.
+          example: Assistance
+        description:
+          type: string
+          description: Cover description.
+        optional:
+          type: boolean
+          description: Cover optional flag.
+          example: true
+        sumInsured:
+          type: number
+          description: Cover sum insured.
+          example: 1
+      description: Product cover list.
+    ProductDto:
+      required:
+        - code
+        - covers
+        - description
+        - icon
+        - id
+        - image
+        - maxNumberOfInsured
+        - name
+        - questions
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product id.
+          example: 5f5cfc0fc13f9304d8c88158
+        code:
+          type: string
+          description: Product code.
+          example: CAR
+        name:
+          type: string
+          description: Product name.
+          example: Happy Driver
+        image:
+          type: string
+          description: Product image.
+          example: /static/car.jpg
+        description:
+          type: string
+          description: Product description.
+          example: Car insurance
+        covers:
+          type: array
+          description: Product cover list.
+          items:
+            $ref: '#/components/schemas/CoverDto'
+        questions:
+          type: array
+          description: Product question list.
+          items:
+            $ref: '#/components/schemas/QuestionDto'
+        maxNumberOfInsured:
+          type: integer
+          description: Max number of insured.
+          format: int32
+          example: 1
+        icon:
+          type: string
+          description: Product icon.
+          example: car
+    QuestionDto:
+      required:
+        - code
+        - index
+        - text
+      type: object
+      properties:
+        code:
+          type: string
+          description: Question code.
+          example: NUM_OF_CLAIM
+        index:
+          type: integer
+          description: Question index.
+          format: int32
+          example: 1
+        text:
+          type: string
+          description: Question text.
+          example: Number of claims in last 5 years
+      description: Product question list.

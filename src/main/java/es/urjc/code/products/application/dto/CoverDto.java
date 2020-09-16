@@ -5,12 +5,19 @@ import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class CoverDto {
 	
+	@Schema(description = "Cover code.", example = "C1", required = true)
     private String code;
+	@Schema(description = "Cover name.", example = "Assistance", required = true)
     private String name;
+	@Schema(description = "Cover description.", required = false)
     private String description;
+	@Schema(description = "Cover optional flag.", example = "true", required = true)
     private boolean optional;
+	@Schema(description = "Cover sum insured.", example = "1", required = false)
     private BigDecimal sumInsured;
     
     public CoverDto() {

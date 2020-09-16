@@ -1,9 +1,14 @@
 package es.urjc.code.products.application.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class QuestionDto {
 	
+	@Schema(description = "Question code.", example = "NUM_OF_CLAIM", required = true)
     private String code;
+	@Schema(description = "Question index.", example = "1", required = true)
     private int index;
+	@Schema(description = "Question text.", example = "Number of claims in last 5 years", required = true)
     private String text;
 
 	public String getCode() {

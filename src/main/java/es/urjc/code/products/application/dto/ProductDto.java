@@ -5,16 +5,27 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class ProductDto {
 	
+	@Schema(description = "Product id.", example = "5f5cfc0fc13f9304d8c88158", required = true)
 	public String id;
+	@Schema(description = "Product code.", example = "CAR", required = true)
     private String code;
+	@Schema(description = "Product name.", example = "Happy Driver", required = true)
     private String name;
+	@Schema(description = "Product image.", example = "/static/car.jpg", required = true)
     private String image;
+	@Schema(description = "Product description.", example = "Car insurance", required = true)
     private String description;
+	@Schema(description = "Product cover list.", required = true)
     private List<CoverDto> covers;
+	@Schema(description = "Product question list.", required = true)
     private List<QuestionDto> questions;
+	@Schema(description = "Max number of insured.", example = "1", required = true)
     private int maxNumberOfInsured;
+	@Schema(description = "Product icon.", example = "car", required = true)
     private String icon;
 
 	public ProductDto() {
