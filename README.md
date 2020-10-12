@@ -36,7 +36,7 @@ In case you have mongodb installed locally, and you want to run from IDE
 * Import the testcontainers-demo application as a Maven project to your IDE.
 * Run maven clean install command to build the project.
 * Then you can search for Application.java class and run it with profile 'dev'
-* Application will be running on: http://localhost:8080/api/v1/products
+* Application will be running on: http://localhost:8081/api/v1/products
 
 #### Option 3:
 In case you don't have mongodb installed locally, and you want to run from IDE
@@ -46,7 +46,7 @@ In case you don't have mongodb installed locally, and you want to run from IDE
 * From the command line run the following command to have mongodb running in a docker container:<br/>
     ```docker run -d -p 27017:27017 --name mongodb mongo:4.2.6```
 * Then you can search for Application.java class and run it with profile 'dev'
-* Application will be running on: http://localhost:8080/api/v1/products
+* Application will be running on: http://localhost:8081/api/v1/products
 
 ## How to run the Unit Test
 
