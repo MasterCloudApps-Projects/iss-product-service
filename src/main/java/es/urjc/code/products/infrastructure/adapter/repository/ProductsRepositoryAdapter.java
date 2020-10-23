@@ -24,7 +24,7 @@ public class ProductsRepositoryAdapter implements LoadProductPort {
 	
 	@Override
 	public Product get(String productCode) {
-		return productMongoRepository.findByCode(productCode).orElseThrow(EntityNotFoundException::new);
+		return productMongoRepository.findByCode(productCode).orElseThrow(()-> new EntityNotFoundException("Product not found. Looking for product with code: " + productCode));
 	}
 
 	@Override
