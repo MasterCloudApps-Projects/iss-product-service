@@ -4,8 +4,7 @@ import java.util.List;
 
 import es.urjc.code.products.application.dto.ProductDto;
 
-public interface ProductsUseCase {
+public interface FindAllProductsUseCase {
 
 	List<ProductDto> findAll();
-	ProductDto get(String productCode);
 }

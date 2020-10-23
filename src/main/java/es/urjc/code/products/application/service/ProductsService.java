@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.urjc.code.products.application.dto.ProductDto;
-import es.urjc.code.products.application.port.incoming.ProductsUseCase;
+import es.urjc.code.products.application.port.incoming.FindAllProductsUseCase;
+import es.urjc.code.products.application.port.incoming.GetProductUseCase;
 import es.urjc.code.products.application.port.outgoing.LoadProductPort;
 import es.urjc.code.products.infrastructure.adapter.mapper.ProductsAssembler;
 
 
 @Service
-public class ProductsService implements ProductsUseCase {
+public class ProductsService implements GetProductUseCase, FindAllProductsUseCase {
 	
 	private final LoadProductPort loadProductPort;
 	

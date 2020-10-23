@@ -13,29 +13,32 @@ import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 
 import es.urjc.code.products.application.dto.ProductDto;
-import es.urjc.code.products.application.port.incoming.ProductsUseCase;
+import es.urjc.code.products.application.port.incoming.FindAllProductsUseCase;
+import es.urjc.code.products.application.port.incoming.GetProductUseCase;
 
 class ProductsControllerTest {
 	
 	private static final String CODE_CAR = "CAR";
-	private ProductsUseCase productsUseCase;
+	private GetProductUseCase getProductUseCase;
+	private FindAllProductsUseCase findAllProductsUseCase;
 	private ProductsController sut;
 
 	@BeforeEach
 	public void setUp() {
-		this.productsUseCase  = Mockito.mock(ProductsUseCase.class);
-		this.sut = new ProductsController(productsUseCase);
+		this.getProductUseCase = Mockito.mock(GetProductUseCase.class);
+		this.findAllProductsUseCase  = Mockito.mock(FindAllProductsUseCase.class);
+		this.sut = new ProductsController(getProductUseCase, findAllProductsUseCase);
 	}
 	
 	@Test
 	void shouldBeGetProductUseCase() {
 		// given
 		final var productDto = getProductDto();
-		when(productsUseCase.get(CODE_CAR)).thenReturn(productDto);
+		when(getProductUseCase.get(CODE_CAR)).thenReturn(productDto);
 		// when
 		ResponseEntity<ProductDto> response = sut.getProduct(CODE_CAR);
 		// then
-		verify(productsUseCase).get(CODE_CAR);
+		verify(getProductUseCase).get(CODE_CAR);
 		assertEquals(productDto, response.getBody());
 	}
 
@@ -43,11 +46,11 @@ class ProductsControllerTest {
 	void shouldBeFindAllProductsUseCase() {
 		// given
 	    final var productDtos = Arrays.asList(getProductDto());
-	    when(productsUseCase.findAll()).thenReturn(productDtos);
+	    when(findAllProductsUseCase.findAll()).thenReturn(productDtos);
 		// when
 	    ResponseEntity<List<ProductDto>> response  = sut.getProducts();
 		// then
-	    verify(productsUseCase).findAll();
+	    verify(findAllProductsUseCase).findAll();
 		assertEquals(productDtos, response.getBody());
 	}
 	
