@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.urjc.code.products.application.dto.ProductDto;
 import es.urjc.code.products.application.port.incoming.FindAllProductsUseCase;
@@ -13,6 +14,7 @@ import es.urjc.code.products.infrastructure.adapter.mapper.ProductsAssembler;
 
 
 @Service
+@Transactional
 public class ProductsService implements GetProductUseCase, FindAllProductsUseCase {
 	
 	private final LoadProductPort loadProductPort;
