@@ -5,7 +5,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 import io.restassured.RestAssured;
 
-public abstract class BaseIT {
+public abstract class BaseE2ETestCase {
 
     @LocalServerPort
     private int port;
