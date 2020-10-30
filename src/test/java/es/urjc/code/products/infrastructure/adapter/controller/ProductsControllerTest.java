@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import es.urjc.code.products.application.dto.ProductDto;
@@ -39,6 +40,7 @@ class ProductsControllerTest {
 		ResponseEntity<ProductDto> response = sut.getProduct(CODE_CAR);
 		// then
 		verify(getProductUseCase).get(CODE_CAR);
+		assertEquals(HttpStatus.OK,response.getStatusCode());
 		assertEquals(productDto, response.getBody());
 	}
 
@@ -51,6 +53,7 @@ class ProductsControllerTest {
 	    ResponseEntity<List<ProductDto>> response  = sut.getProducts();
 		// then
 	    verify(findAllProductsUseCase).findAll();
+	    assertEquals(HttpStatus.OK,response.getStatusCode());
 		assertEquals(productDtos, response.getBody());
 	}
 	
