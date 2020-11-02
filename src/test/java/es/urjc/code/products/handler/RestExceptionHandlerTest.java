@@ -1,16 +1,27 @@
 package es.urjc.code.products.handler;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import es.urjc.code.products.handler.TestController;
 import es.urjc.code.products.handler.RestExceptionHandler;
 
+@ContextConfiguration(classes = { TestController.class, RestExceptionHandler.class })
+@WebAppConfiguration
 class RestExceptionHandlerTest {
 
     private TestController testController;
@@ -56,5 +67,15 @@ class RestExceptionHandlerTest {
     void testIOException() throws Exception {
         mockMvc.perform(get("/test/io-exception")).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("Bad Request"));
+    }
+    
+    @Test
+    void testValidationError() throws Exception {
+    	String content = new ObjectMapper().writeValueAsString( new es.urjc.code.products.handler.TestController.TestFieldValidation());
+    	MvcResult result = mockMvc.perform(post("/test/validation-exception").contentType(MediaType.APPLICATION_JSON).content(content))
+        .andExpect(status().isBadRequest())
+        .andReturn();
+    	String body = result.getResponse().getContentAsString();
+    	assertTrue(body.contains("must not be null"));
     }
 }

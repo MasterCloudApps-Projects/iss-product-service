@@ -2,9 +2,13 @@ package es.urjc.code.products.infrastructure.adapter.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +27,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "product", description = "the Product catalog API")
+@Validated
 public class ProductsController {
 
 	private final GetProductUseCase getProductUseCase;
@@ -41,7 +46,7 @@ public class ProductsController {
 			@ApiResponse(responseCode = "404", description = "Product not found") })
 	@GetMapping("/api/v1/products/{productCode}")
 	public ResponseEntity<ProductDto> getProduct(
-			@Parameter(description = "code of the product to be obtained. Cannot be empty.", required = true) @PathVariable("productCode") String productCode) {
+			@Parameter(description = "code of the product to be obtained. Cannot be empty.", required = true) @Valid @NotEmpty @PathVariable("productCode") String productCode) {
 		return ResponseEntity.status(HttpStatus.OK).body(getProductUseCase.get(productCode));
 	}
 
