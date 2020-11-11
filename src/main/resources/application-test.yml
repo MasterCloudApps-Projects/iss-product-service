@@ -6,12 +6,9 @@ spring:
   application:
     name: iss-product-service
   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-    kubernetes:
+    kubernetes:  
       discovery:
-        all-namespaces: true
+          enabled: false  
   data:
     mongodb:
        host: ${MONGO_DB_HOST}

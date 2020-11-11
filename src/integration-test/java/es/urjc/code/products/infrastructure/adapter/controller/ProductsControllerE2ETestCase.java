@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.context.ActiveProfiles;
 
 import es.urjc.code.products.application.domain.Product;
 import es.urjc.code.products.infrastructure.annotation.IT;
@@ -17,6 +18,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 @IT
+@ActiveProfiles("test")
 class ProductsControllerE2ETestCase extends BaseE2ETestCase {
 
 
