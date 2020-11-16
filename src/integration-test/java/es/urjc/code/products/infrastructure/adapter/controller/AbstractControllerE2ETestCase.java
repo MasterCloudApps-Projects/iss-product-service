@@ -1,11 +1,14 @@
 package es.urjc.code.products.infrastructure.adapter.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 
 import io.restassured.RestAssured;
 
-public abstract class BaseE2ETestCase {
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+public abstract class AbstractControllerE2ETestCase extends AbstractContainerIntegrationTest {
 
     @LocalServerPort
     private int port;

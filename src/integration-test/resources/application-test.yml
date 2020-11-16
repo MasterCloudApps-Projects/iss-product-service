@@ -11,9 +11,7 @@ spring:
           enabled: false  
   data:
     mongodb:
-       host: ${MONGO_DB_HOST}
-       port: ${MONGO_DB_PORT}
-       database: ${MONGO_DB_NAME}    
+      uri: mongodb://localhost:27017/test
 
 management:
   endpoint:

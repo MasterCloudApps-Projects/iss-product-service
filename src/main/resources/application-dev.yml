@@ -14,7 +14,7 @@ spring:
         all-namespaces: true
   data:
     mongodb:
-       uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb.default/${MONGO_DATABASE}   
+      uri: mongodb://${MONGO_DB_HOST}:${MONGO_DB_PORT}/${MONGO_DB_NAME}
 
 management:
   endpoint:
