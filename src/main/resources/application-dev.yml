@@ -1,6 +1,10 @@
 server:
    port: 8081
-   
+
+springdoc:
+  api-docs:
+    path: /product-openapi
+       
 spring:
   jackson.serialization.indent_output: true
   application:
